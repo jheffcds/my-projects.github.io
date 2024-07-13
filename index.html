@@ -3,19 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>My Projects</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Websiteee</h1>
-    </header>
-    <main>
-        <p>This is my first websiteee builtt from scratch.</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 My Website</p>
-    </footer>
-    <script src="scripts.js"></script>
+    <div class="container">
+        <div class="navbar">
+            <div class="nav-item" id="home">
+                <span class="icon">🏠</span>
+                <span class="label">Home</span>
+            </div>
+            <div class="nav-item" id="portfolio">
+                <span class="icon">💼</span>
+                <span class="label">Portfolio</span>
+            </div>
+            <div class="nav-item" id="contact">
+                <span class="icon">📇</span>
+                <span class="label">Contact</span>
+            </div>
+            <div class="nav-item" id="gallery">
+                <span class="icon">🖼️</span>
+                <span class="label">Gallery</span>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>My Projects</h1>
+            <div class="video-container">
+                <video controls>
+                    <source src="your-intro-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="scrollbar"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
