@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Initial load
+    // Initial loads
     loadMoreProjects();
 
     // Infinite scroll handler

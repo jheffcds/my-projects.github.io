@@ -1,28 +1,60 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    display: flex;
     height: 100vh;
-    overflow-y: scroll;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 0.5fr 4fr 0.5fr;
+    grid-template-rows: 0.5fr 3fr 0.5fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "a b d"
+        "a c d"
+        "a c d";
+    height: 100%;
+    width: 100%;
+}
+
+.a { 
+    grid-area: a; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+}
+
+.b { 
+    grid-area: b; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.c { 
+    grid-area: c; 
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.d { 
+    grid-area: d; 
+    background-color: #ddd; 
 }
 
 .navbar {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
-    transition: width 0.3s;
-    z-index: 1000;
-}
-
-.navbar:hover {
-    width: 200px;
 }
 
 .nav-item {
@@ -48,27 +80,18 @@ body {
     display: none;
 }
 
-.navbar:hover .label {
+.nav-item:hover .label {
     display: inline;
 }
 
-.main-content {
-    flex: 1;
-    margin-left: 60px; /* Offset for the fixed navbar */
-    padding: 20px;
-    box-sizing: border-box;
-    width: calc(100% - 60px); /* Adjust the width to account for the navbar */
-}
-
 .main-content h1 {
-    margin-top: 20px; /* Add some margin to the top */
+    margin-top: 20px;
 }
 
 .project-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 20px;
-    margin-top: 20px;
 }
 
 .project-item {
@@ -81,9 +104,4 @@ body {
 video {
     width: 100%;
     height: auto;
-}
-
-.scrollbar {
-    width: 10px;
-    background-color: #ddd;
 }
