@@ -1,50 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Webpage with Gallery</title>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
 <body>
-    <div class="container">
-        <div class="a">
-            <div class="navbar">
-                <div class="nav-item" id="home">
-                    <span class="icon">🏠</span>
-                    <span class="label">Home</span>
-                </div>
-                <div class="nav-item" id="portfolio">
-                    <span class="icon">💼</span>
-                    <span class="label">Portfolio</span>
-                </div>
-                <div class="nav-item" id="contact">
-                    <span class="icon">📇</span>
-                    <span class="label">Contact</span>
-                </div>
-                <div class="nav-item" id="gallery">
-                    <span class="icon">🖼️</span>
-                    <span class="label">Gallery</span>
-                </div>
-            </div>
+    <div class="navbar">
+        <div class="title">My Projects</div>
+        <div class="menu" id="menu">
+            <a href="#">Home</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+            <a href="#">Gallery</a>
         </div>
-        <div class="b">
-            <h1>My Projects</h1>
+        <div class="toggle-button" id="toggle-button" onclick="toggleMenu()">
+            &#9776;
         </div>
-        <div class="c">
-            <div class="project-container" id="project-container">
-                <!-- Sample project item -->
-                <div class="project-item">
-                    <video controls>
-                        <source src="your-intro-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Project Description</p>
-                </div>
-            </div>
-        </div>
-        <div class="d"></div>
     </div>
-    <script src="script.js"></script>
+    <div class="container">
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="assets/videos/up.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="introduction">
+            <h1>Introduction</h1>
+            <p>Welcome to my digital world! Here, I present a passion project born from the depths of Blender, where creativity meets digital craftsmanship. Meet Jevh, a 3D embodiment of my own persona, meticulously crafted to reflect my unique characteristics and essence.</p>
+        </div>
+        <div class="gallery">
+            <div class="gallery-item prev">
+                <img id="prevImage" class="gallery-image" src="assets/images/image3.png" alt="Previous Image">
+            </div>
+            <div class="gallery-item current">
+                <img id="currentImage" class="gallery-image" src="assets/images/image1.png" alt="Current Image">
+            </div>
+            <div class="gallery-item next">
+                <img id="nextImage" class="gallery-image" src="assets/images/image2.png" alt="Next Image">
+            </div>
+        </div>
+        <div class="gallery-buttons">
+            <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+            <button class="next" onclick="changeImage(1)">&#10095;</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><img src="assets/images/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="assets/images/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="assets/images/gmail.png" alt="Gmail"></a>
+        </div>
+    </footer>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

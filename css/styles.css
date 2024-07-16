@@ -1,107 +1,274 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    display: grid;
-    grid-template-columns: 0.5fr 4fr 0.5fr;
-    grid-template-rows: 0.5fr 3fr 0.5fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        "a b d"
-        "a c d"
-        "a c d";
+html, body {
     height: 100%;
-    width: 100%;
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: #f8f8f8;
 }
 
-.a { 
-    grid-area: a; 
+body {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f4;
-}
-
-.b { 
-    grid-area: b; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.c { 
-    grid-area: c; 
-    overflow-y: auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.d { 
-    grid-area: d; 
-    background-color: #ddd; 
 }
 
 .navbar {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding-top: 20px;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
 }
 
-.nav-item {
-    width: 100%;
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.nav-item:hover {
-    background-color: #ddd;
-}
-
-.icon {
+.navbar .title {
     font-size: 24px;
-    margin-left: 10px;
+    font-weight: bold;
 }
 
-.label {
-    margin-left: 20px;
+.navbar .menu {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.navbar .menu a:hover {
+    background-color: #555;
+}
+
+.toggle-button {
     display: none;
+    font-size: 30px;
+    cursor: pointer;
 }
 
-.nav-item:hover .label {
-    display: inline;
-}
-
-.main-content h1 {
-    margin-top: 20px;
-}
-
-.project-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-}
-
-.project-item {
+.container {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 20px;
 }
 
-video {
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5F5F5F;
+    padding: 20px;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.video-container video {
     width: 100%;
-    height: auto;
+    height: 100%;  /* Ensure video fills the container */
+    object-fit: cover;  /* Maintain aspect ratio, cover the container */
+}
+
+.introduction {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.introduction h1 {
+    font-size: 24px;
+}
+
+.introduction p {
+    font-size: 16px;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5F5F5F;
+    padding: 50px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.gallery-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    margin: 0 -50px; /* Reduce the space between images */
+}
+
+.gallery-image {
+    max-height: 200px;
+    transition: all 0.5s ease;
+    opacity: 0.7;
+}
+
+.gallery-item.current .gallery-image {
+    max-height: 300px;
+    opacity: 1;
+    z-index: 1;
+    margin: 0 20px; /* Center the current image */
+}
+
+.gallery-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.gallery-buttons button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.gallery-buttons button:hover {
+    background-color: #555;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-top: 1px solid #ccc;
+}
+
+footer p {
+    margin: 0;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+    margin: 0 5px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: black;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .navbar .menu a {
+        margin: 10px 0;
+        padding: 10px 0;
+    }
+
+    .toggle-button {
+        display: block;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .video-container {
+        padding: 10px;
+    }
+
+    .introduction {
+        padding: 10px;
+    }
+
+    .introduction h1 {
+        font-size: 20px;
+    }
+
+    .introduction p {
+        font-size: 14px;
+    }
+
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+        padding: 50px;
+    }
+
+    .gallery-item {
+        margin: 10px 0;
+    }
+
+    .gallery-image {
+        max-height: 150px;
+    }
+
+    .gallery-item.current .gallery-image {
+        max-height: 250px;
+        margin: -125px 0;
+    }
+
+    .gallery-buttons {
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 20px;
+    }
+
+    .gallery-buttons button {
+        margin: 5px 0;
+        width: 100px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-links img {
+        margin: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .title {
+        font-size: 20px;
+    }
+
+    .navbar .menu a {
+        padding: 5px 0;
+    }
+
+    .introduction h1 {
+        font-size: 18px;
+    }
+
+    .introduction p {
+        font-size: 12px;
+    }
+
+    .gallery-image {
+        max-height: 120px;
+    }
+
+    .gallery-item.current .gallery-image {
+        max-height: 200px;
+    }
+
+    .gallery-buttons button {
+        width: 80px;
+    }
 }

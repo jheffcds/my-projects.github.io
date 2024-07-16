@@ -1,35 +1,41 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let projectContainer = document.getElementById('project-container');
+let currentImageIndex = 0;
+const images = [
+    'assets/images/image1.jpg',
+    'assets/images/image2.jpg',
+    'assets/images/image3.jpg',
+    'assets/images/image4.JPG',
+    'assets/images/image5.JPG',
+    'assets/images/image6.JPG'
+];
 
-    // Function to load more projects
-    function loadMoreProjects() {
-        for (let i = 0; i < 5; i++) { // Load 5 more projects as an example
-            let projectItem = document.createElement('div');
-            projectItem.className = 'project-item';
+function changeImage(direction) {
+    currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
 
-            let video = document.createElement('video');
-            video.controls = true;
-            let source = document.createElement('source');
-            source.src = 'your-intro-video.mp4'; // Change to your video source
-            source.type = 'video/mp4';
-            video.appendChild(source);
+    const prevImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    const nextImageIndex = (currentImageIndex + 1) % images.length;
 
-            let description = document.createElement('p');
-            description.textContent = 'Project Description'; // Change to your project description
+    document.getElementById('prevImage').src = images[prevImageIndex];
+    document.getElementById('currentImage').src = images[currentImageIndex];
+    document.getElementById('nextImage').src = images[nextImageIndex];
 
-            projectItem.appendChild(video);
-            projectItem.appendChild(description);
-            projectContainer.appendChild(projectItem);
-        }
-    }
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => item.classList.remove('current'));
+    galleryItems[1].classList.add('current');
+}
 
-    // Initial loads
-    loadMoreProjects();
-
-    // Infinite scroll handler
-    window.addEventListener('scroll', function() {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            loadMoreProjects();
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    changeImage(0);
 });
+
+function toggleMenu() {
+    const menu = document.getElementById('menu');
+    const toggleButton = document.getElementById('toggle-button');
+    if (menu.style.display === 'flex') {
+        menu.style.display = 'none';
+        toggleButton.innerHTML = '&#9776;'; // 3 horizontal lines
+    } else {
+        menu.style.display = 'flex';
+        toggleButton.innerHTML = '&times;'; // X symbol
+    }
+}
+
