@@ -1,12 +1,7 @@
 let currentImageIndex = 0;
-const images = [
-    'assets/images/image1.jpg',
-    'assets/images/image2.jpg',
-    'assets/images/image3.jpg',
-    'assets/images/image4.JPG',
-    'assets/images/image5.JPG',
-    'assets/images/image6.JPG'
-];
+let currentInfoIndex = 0;
+let infoData = [];
+let images = [];
 
 function changeImage(direction) {
     currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
@@ -23,8 +18,53 @@ function changeImage(direction) {
     galleryItems[1].classList.add('current');
 }
 
+function changeInfo(direction) {
+    if (infoData.length === 0) return;
+
+    currentInfoIndex = (currentInfoIndex + direction + infoData.length) % infoData.length;
+
+    const description = document.getElementById('description');
+    const infoText = document.getElementById('infoText');
+    const fixedImage = document.getElementById('fixedImage');
+
+    infoText.textContent = infoData[currentInfoIndex].text;
+    description.textContent = infoData[currentInfoIndex]
+    fixedImage.src = infoData[currentInfoIndex].image;
+}
+
+function loadInfoData() {
+    fetch('assets/data/info.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            infoData = data;
+            changeInfo(0); // Initialize with the first data
+        })
+        .catch(error => console.error('Error loading info data:', error));
+}
+
+function loadImages() {
+    fetch('assets/data/images.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            images = data;
+            changeImage(0); // Initialize with the first image
+        })
+        .catch(error => console.error('Error loading images:', error));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    changeImage(0);
+    loadImages(); // Load the images data on page load
+    loadInfoData(); // Load the info data on page load
 });
 
 function toggleMenu() {
@@ -38,4 +78,3 @@ function toggleMenu() {
         toggleButton.innerHTML = '&times;'; // X symbol
     }
 }
-

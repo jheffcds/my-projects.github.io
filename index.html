@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Responsive Webpage with Gallery</title>
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Webpage with Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
 <body>
     <div class="navbar">
         <div class="title">My Projects</div>
@@ -21,30 +21,48 @@
         </div>
     </div>
     <div class="container">
+        <!-- video section -->
         <div class="video-container">
             <video autoplay muted loop>
                 <source src="assets/videos/up.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
+        <!-- Introduction section -->
         <div class="introduction">
             <h1>Introduction</h1>
             <p>Welcome to my digital world! Here, I present a passion project born from the depths of Blender, where creativity meets digital craftsmanship. Meet Jevh, a 3D embodiment of my own persona, meticulously crafted to reflect my unique characteristics and essence.</p>
         </div>
+        <!-- Gallery section -->
         <div class="gallery">
             <div class="gallery-item prev">
-                <img id="prevImage" class="gallery-image" src="assets/images/image3.png" alt="Previous Image">
+                <img id="prevImage" class="gallery-image" src="assets/images/image3.jpg" alt="Previous Image">
             </div>
             <div class="gallery-item current">
-                <img id="currentImage" class="gallery-image" src="assets/images/image1.png" alt="Current Image">
+                <img id="currentImage" class="gallery-image" src="assets/images/image1.jpg" alt="Current Image">
             </div>
             <div class="gallery-item next">
-                <img id="nextImage" class="gallery-image" src="assets/images/image2.png" alt="Next Image">
+                <img id="nextImage" class="gallery-image" src="assets/images/image2.jpg" alt="Next Image">
             </div>
         </div>
+        <!-- Gallery buttons section -->
         <div class="gallery-buttons">
             <button class="prev" onclick="changeImage(-1)">&#10094;</button>
             <button class="next" onclick="changeImage(1)">&#10095;</button>
+        </div>
+        <!-- New section for information and image -->
+        <div class="info-image-container">
+            <div class="info-container">
+                <h3 id="infoText">Title</h3><br>
+                <p id="description">This is the description of the image</p>
+            </div>
+            <div class="image-container">
+                <img id="fixedImage" src="assets/images/image1.jpg" alt="Info Image" style="width: 200px; height: 200px;">
+            </div>
+        </div>
+        <div class="info-buttons">
+            <button class="prev-info" onclick="changeInfo(-1)">&#10094;</button>
+            <button class="next-info" onclick="changeInfo(1)">&#10095;</button>
         </div>
     </div>
     <footer>

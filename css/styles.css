@@ -52,6 +52,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
+    background-color: #6a6a6a96;
 }
 
 .video-container {
@@ -62,6 +63,7 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     flex: 1;
+    border-radius: 10px;
 }
 
 .video-container video {
@@ -136,6 +138,49 @@ body {
     background-color: #555;
 }
 
+.info-image-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+.info-container, .image-container {
+    flex: 1;
+    width: calc(50% - 10px);
+    height: 100%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    border-radius: 10px;
+    background-color:white;
+}
+
+
+.info-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.info-buttons button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
 footer {
     display: flex;
     justify-content: space-between;
@@ -143,6 +188,7 @@ footer {
     padding: 10px 20px;
     background-color: white;
     border-top: 1px solid #ccc;
+    margin-top: auto; /* Push the footer to the bottom */
 }
 
 footer p {
@@ -233,6 +279,18 @@ footer p {
         width: 100px;
     }
 
+
+    .info-buttons {
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 20px;
+    }
+
+    .info-buttons button {
+        margin: 5px 0;
+        width: 100px;
+    }
+
     footer {
         flex-direction: column;
         text-align: center;
@@ -269,6 +327,10 @@ footer p {
     }
 
     .gallery-buttons button {
+        width: 80px;
+    }
+
+    .info-buttons button {
         width: 80px;
     }
 }
