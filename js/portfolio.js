@@ -18,7 +18,7 @@ function typeEffect() {
     const text = element.innerText;
     element.innerText = '';
     let i = 0;
-    const speed = 20; // Speed of typing in milliseconds
+    const speed = 21; // Speed of typing in milliseconds
 
     function type() {
         if (i < text.length) {
