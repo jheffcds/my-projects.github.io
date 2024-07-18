@@ -9,9 +9,10 @@ function changeImage(direction) {
     const prevImageIndex = (currentImageIndex - 1 + images.length) % images.length;
     const nextImageIndex = (currentImageIndex + 1) % images.length;
 
-    document.getElementById('prevImage').src = images[prevImageIndex];
-    document.getElementById('currentImage').src = images[currentImageIndex];
-    document.getElementById('nextImage').src = images[nextImageIndex];
+    document.getElementById('prevImage').src = images[prevImageIndex].image;
+    document.getElementById('currentImage').src = images[currentImageIndex].image;
+    document.getElementById('nextImage').src = images[nextImageIndex].image;
+    document.getElementById('currentDescription').textContent = images[currentImageIndex].description;
 
     const galleryItems = document.querySelectorAll('.gallery-item');
     galleryItems.forEach(item => item.classList.remove('current'));
@@ -48,7 +49,7 @@ function loadInfoData() {
 }
 
 function loadImages() {
-    fetch('assets/data/images.json')
+    fetch('assets/data/gallery.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

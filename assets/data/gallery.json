@@ -1,0 +1,22 @@
+[
+    {
+        "image": "assets/images/image1.jpg",
+        "description": "Description for image 1"
+    },
+    {
+        "image": "assets/images/image2.jpg",
+        "description": "Description for image 2"
+    },
+    {
+        "image": "assets/images/image3.jpg",
+        "description": "Description for image 3"
+    },
+    {
+        "image": "assets/images/image4.jpg",
+        "description": "Description for image 4"
+    },
+    {
+        "image": "assets/images/image5.jpg",
+        "description": "Description for image 5"
+    }
+]

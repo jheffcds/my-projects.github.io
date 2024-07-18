@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="title">My Projects</div>
+        <div class="menu" id="menu">
+            <a href="index.html">Home</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Contact</a>
+            <a href="#">Gallery</a>
+        </div>
+        <div class="toggle-button" id="toggle-button" onclick="toggleMenu()">
+            &#9776;
+        </div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('aboutMe')">
+                <span>Introduction</span>
+                <span class="expand-button" id="aboutMeButton">&#10095;</span>
+            </div>
+            <div class="section-content" id="aboutMe">
+                <img src="assets/images/myself_profile.jpg" alt="Profile Image" class="profile-image">
+                <div id="typeEffect">
+                    <h2>Welcome to My Portfolio!</h2>
+                    <p>Hi, I'm Jhefferson Castro Dos Santos, a passionate Data Analyst and Cloud Migration Trainee at AFAST Accenture Financial Advanced Solutions in Padova, Italy. My journey in the world of technology is fueled by curiosity and an open mind, always eager to embrace new challenges and experiences.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('projects')">
+                <span>About Me</span>
+                <span class="expand-button" id="projectsButton">&#10095;</span>
+            </div>
+            <div class="section-content" id="projects">
+                <p>This is the content for About Me.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('skills')">
+                <span>Skills/Expertise</span>
+                <span class="expand-button" id="skillsButton">&#10095;</span>
+            </div>
+            <div class="section-content" id="skills">
+                <p>This is the content for Skills/Expertise.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('resume')">
+                <span>Resume/CV</span>
+                <span class="expand-button" id="resumeButton">&#10095;</span>
+            </div>
+            <div class="section-content" id="resume">
+                <p>This is the content for Resume/CV.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><img src="assets/images/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="assets/images/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="assets/images/gmail.png" alt="Gmail"></a>
+        </div>
+    </footer>
+    <script src="js/scripts.js"></script>
+    <script src="js/portfolio.js"></script>
+</body>
+</html>

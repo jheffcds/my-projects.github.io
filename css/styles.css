@@ -166,7 +166,7 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    background-color: grey;
+    background-color: #555555;
     border-radius: 10px;
 }
 
@@ -176,10 +176,11 @@ body {
     height: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     margin: 0 10px;
     border-radius: 10px;
-    background-color: white;
+    background-color: #a7a6a2;
 }
 
 .info-buttons {
@@ -358,5 +359,69 @@ footer p {
 
     .info-buttons button {
         width: 80px;
+    }
+}
+/* Portfolio configurations */
+.section {
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.section-content {
+    display: none;
+    padding: 10px;
+}
+
+.expand-button {
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+.section-header.open .expand-button {
+    transform: rotate(90deg); /* Rotate 90 degrees */
+}
+
+.intro-content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.intro-text h2 {
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .intro-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro-image {
+        margin-bottom: 20px;
+    }
+
+    .intro-text {
+        text-align: center;
     }
 }
