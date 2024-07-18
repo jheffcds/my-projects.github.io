@@ -35,14 +35,19 @@
         </div>
         <!-- Gallery section -->
         <div class="gallery">
-            <div class="gallery-item prev">
-                <img id="prevImage" class="gallery-image" src="assets/images/image3.jpg" alt="Previous Image">
+            <div class="gallery-left-container">
+                <div class="gallery-item prev">
+                    <img id="prevImage" class="gallery-image" src="assets/images/image3.jpg" alt="Previous Image">
+                </div>
+                <div class="gallery-item current">
+                    <img id="currentImage" class="gallery-image" src="assets/images/image1.jpg" alt="Current Image">
+                </div>
+                <div class="gallery-item next">
+                    <img id="nextImage" class="gallery-image" src="assets/images/image2.jpg" alt="Next Image">
+                </div>
             </div>
-            <div class="gallery-item current">
-                <img id="currentImage" class="gallery-image" src="assets/images/image1.jpg" alt="Current Image">
-            </div>
-            <div class="gallery-item next">
-                <img id="nextImage" class="gallery-image" src="assets/images/image2.jpg" alt="Next Image">
+            <div class="gallery-right-container">
+                <p id="currentDescription" class="gallery-description">Description of the current image</p>
             </div>
         </div>
         <!-- Gallery buttons section -->
@@ -63,7 +68,7 @@
         <div class="info-buttons">
             <button class="prev-info" onclick="changeInfo(-1)">&#10094;</button>
             <button class="next-info" onclick="changeInfo(1)">&#10095;</button>
-        </div>
+        </div>        
     </div>
     <footer>
         <p>&copy; 2024 All rights reserved.</p>

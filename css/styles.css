@@ -68,8 +68,8 @@ body {
 
 .video-container video {
     width: 100%;
-    height: 100%;  /* Ensure video fills the container */
-    object-fit: cover;  /* Maintain aspect ratio, cover the container */
+    height: 100%;
+    object-fit: cover;
 }
 
 .introduction {
@@ -89,12 +89,23 @@ body {
 
 .gallery {
     display: flex;
+    flex-direction: row;
+    background-color: #555;
+    border-radius: 10px;
+    justify-content: space-around;
+    padding: 25px;
+}
+
+.gallery-left-container,
+.gallery-right-container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #5F5F5F;
-    padding: 50px;
-    border-radius: 10px;
-    position: relative;
+}
+
+.gallery-left-container {
+    flex-direction: row;
 }
 
 .gallery-item {
@@ -103,20 +114,25 @@ body {
     align-items: center;
     position: relative;
     transition: transform 0.5s ease, opacity 0.5s ease;
-    margin: 0 -50px; /* Reduce the space between images */
+    margin: 0 -50px;
 }
 
 .gallery-image {
     max-height: 200px;
     transition: all 0.5s ease;
-    opacity: 0.7;
+    opacity: 0.3;
 }
 
 .gallery-item.current .gallery-image {
     max-height: 300px;
     opacity: 1;
     z-index: 1;
-    margin: 0 20px; /* Center the current image */
+    margin: 0 20px;
+}
+
+.gallery-description {
+    margin-top: 10px;
+    text-align: center;
 }
 
 .gallery-buttons {
@@ -158,20 +174,20 @@ body {
     flex: 1;
     width: calc(50% - 10px);
     height: 100%;
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 10px;
     border-radius: 10px;
-    background-color:white;
+    background-color: white;
 }
-
 
 .info-buttons {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
+
 .info-buttons button {
     background-color: black;
     color: white;
@@ -188,7 +204,7 @@ footer {
     padding: 10px 20px;
     background-color: white;
     border-top: 1px solid #ccc;
-    margin-top: auto; /* Push the footer to the bottom */
+    margin-top: auto;
 }
 
 footer p {
@@ -252,7 +268,10 @@ footer p {
     .gallery {
         flex-direction: column;
         align-items: center;
-        padding: 50px;
+    }
+
+    .gallery-left-container {
+        flex-direction: column;
     }
 
     .gallery-item {
@@ -261,6 +280,14 @@ footer p {
 
     .gallery-image {
         max-height: 150px;
+    }
+
+    .info-image-container {
+        flex-direction: column;
+    }
+
+    .info-container, .image-container {
+        width: calc(100% - 20px);
     }
 
     .gallery-item.current .gallery-image {
@@ -278,7 +305,6 @@ footer p {
         margin: 5px 0;
         width: 100px;
     }
-
 
     .info-buttons {
         flex-direction: row;

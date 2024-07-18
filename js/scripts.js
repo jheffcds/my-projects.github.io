@@ -23,12 +23,12 @@ function changeInfo(direction) {
 
     currentInfoIndex = (currentInfoIndex + direction + infoData.length) % infoData.length;
 
-    const description = document.getElementById('description');
     const infoText = document.getElementById('infoText');
+    const description = document.getElementById('description');
     const fixedImage = document.getElementById('fixedImage');
 
     infoText.textContent = infoData[currentInfoIndex].text;
-    description.textContent = infoData[currentInfoIndex]
+    description.textContent = infoData[currentInfoIndex].description;
     fixedImage.src = infoData[currentInfoIndex].image;
 }
 
