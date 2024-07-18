@@ -18,13 +18,13 @@ function typeEffect() {
     const text = element.innerText;
     element.innerText = '';
     let i = 0;
-    const speed = 21; // Speed of typing in milliseconds
+    const speed = 21; // Speed of typing in millisecondss
 
     function type() {
         if (i < text.length) {
             let char = text.charAt(i);
             if (char === '<') {
-                // Handle HTML tags
+                // Handle HTML tagss
                 let tag = '';
                 while (char !== '>') {
                     tag += char;
