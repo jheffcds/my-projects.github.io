@@ -120,7 +120,7 @@ body {
 .gallery-image {
     max-height: 200px;
     transition: all 0.5s ease;
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .gallery-item.current .gallery-image {
