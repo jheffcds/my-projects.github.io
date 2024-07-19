@@ -13,18 +13,19 @@ function toggleSection(id) {
         }
     }
 }
+
 function typeEffect() {
     const element = document.getElementById('typeEffect');
-    const text = element.innerText;
-    element.innerText = '';
+    const text = element.innerHTML; // Get the HTML content
+    element.innerHTML = ''; // Clear the element's content
     let i = 0;
-    const speed = 21; // Speed of typing in millisecondss
+    const speed = 20; // Speed of typing in milliseconds
 
     function type() {
         if (i < text.length) {
             let char = text.charAt(i);
             if (char === '<') {
-                // Handle HTML tagss
+                // Handle HTML tags
                 let tag = '';
                 while (char !== '>') {
                     tag += char;
@@ -34,7 +35,7 @@ function typeEffect() {
                 tag += char; // Include closing '>'
                 element.innerHTML += tag; // Insert HTML tag
             } else {
-                element.textContent += char; // Append characters including spaces
+                element.innerHTML += char; // Insert character
             }
             i++;
             setTimeout(type, speed);
