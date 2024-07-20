@@ -1,3 +1,5 @@
+let originalText = '';
+
 function toggleSection(id) {
     const sectionContent = document.getElementById(id);
     const button = document.getElementById(id + 'Button');
@@ -9,6 +11,10 @@ function toggleSection(id) {
         sectionContent.style.display = 'block';
         button.innerHTML = '&#10094;';
         if (id === 'aboutMe') {
+            if (!originalText) {
+                // Save the original HTML content only once
+                originalText = document.getElementById('typeEffect').innerHTML;
+            }
             typeEffect();
         }
     }
@@ -16,10 +22,10 @@ function toggleSection(id) {
 
 function typeEffect() {
     const element = document.getElementById('typeEffect');
-    const text = element.innerHTML; // Get the HTML content
+    const text = originalText; // Use the saved original HTML content
     element.innerHTML = ''; // Clear the element's content
     let i = 0;
-    const speed = 20; // Speed of typing in milliseconds
+    const speed = 15; // Speed of typing in milliseconds
 
     function type() {
         if (i < text.length) {

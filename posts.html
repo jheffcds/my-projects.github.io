@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="title">My Projects</div>
+        <div class="menu" id="menu">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="#">Contact</a>
+            <a href="#">Posts</a>
+        </div>
+        <div class="toggle-button" id="toggle-button" onclick="toggleMenu()">
+            &#9776;
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <div class="section-header">
+                <span>What's in your mind?</span>
+            </div>
+            <div class="section-content">
+                <input type="text" id="post-text" placeholder="What's in your mind?">
+                <input type="file" id="post-images" accept="image/*" multiple>
+                <button id="post-button">Post</button>
+            </div>
+        </div>
+    
+        <div class="section">
+            <div class="section-header">
+                <span>My Posts</span>
+            </div>
+            <div class="section-content" id="posts-container">
+                <!-- New posts will appear here -->
+            </div>
+        </div>
+    </div>
+     
+
+    <footer>
+        <p>&copy; 2024 All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><img src="assets/images/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="assets/images/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="assets/images/gmail.png" alt="Gmail"></a>
+        </div>
+    </footer>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

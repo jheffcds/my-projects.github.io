@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <title>Responsive Webpage with Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -14,13 +14,14 @@
             <a href="index.html">Home</a>
             <a href="#">Portfolio</a>
             <a href="#">Contact</a>
-            <a href="#">Gallery</a>
+            <a href="posts.html">Posts</a>
         </div>
         <div class="toggle-button" id="toggle-button" onclick="toggleMenu()">
             &#9776;
         </div>
     </div>
     <div class="container">
+        <!-- Introduction Section -->
         <div class="section">
             <div class="section-header" onclick="toggleSection('aboutMe')">
                 <span>Introduction</span>
@@ -36,17 +37,33 @@
                 </div>
             </div>
         </div>
-
+    
+        <!-- About Me Section -->
         <div class="section">
-            <div class="section-header" onclick="toggleSection('projects')">
+            <div class="section-header" onclick="toggleSection('aboutMeDetails')">
                 <span>About Me</span>
-                <span class="expand-button" id="projectsButton">&#10095;</span>
+                <span class="expand-button" id="aboutMeDetailsButton">&#10095;</span>
             </div>
-            <div class="section-content" id="projects">
-                <p>This is the content for About Me.</p>
+            <div class="section-content" id="aboutMeDetails">
+                <div class="intro-content">
+                    <div class="intro-text" id="aboutMeDetailsText">    
+                        <h3 class="paragraph-title"><u>Personal Information</u></h3>
+                        <p>My name is Jhefferson Castro Dos Santos. I was born on [Your Birth Date] in [Your Birth Place].</p>
+                        
+                        <h3 class="paragraph-title"><u>Journey</u></h3>
+                        <p>At the age of [Your Age], I embarked on a journey to [New Country], where I faced numerous challenges and embraced new opportunities. This period of learning and growth has been integral to my development as a person and a professional.</p>
+                        
+                        <h3 class="paragraph-title"><u>Passions</u></h3>
+                        <p>My passions include technology, data analysis, and cloud computing. In my free time, I enjoy [Your Hobbies], which help me stay balanced and inspired.</p>
+                        
+                        <h3 class="paragraph-title"><u>Learning and Innovation</u></h3>
+                        <p>Through my journey, I have cultivated a deep love for learning and innovation, always seeking new ways to expand my horizons and contribute meaningfully to the world of technology.</p>
+                    </div>
+                </div>
             </div>
         </div>
-
+    
+    
         <div class="section">
             <div class="section-header" onclick="toggleSection('skills')">
                 <span>Skills/Expertise</span>

@@ -79,3 +79,86 @@ function toggleMenu() {
         toggleButton.innerHTML = '&times;'; // X symbol
     }
 }
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('post-button').addEventListener('click', createPost);
+
+    function createPost() {
+        const postText = document.getElementById('post-text').value;
+        const postFiles = document.getElementById('post-images').files;
+
+        if (postText || postFiles.length > 0) {
+            const postContainer = document.createElement('div');
+            postContainer.className = 'post';
+
+            const postHeader = document.createElement('div');
+            postHeader.className = 'post-header';
+
+            const profileImg = document.createElement('img');
+            profileImg.className = 'profile-pic';
+            profileImg.src = 'assets/images/myself_profile.jpg'; // Set the source of the image
+            profileImg.alt = 'Profile picture'; // Set the alt text for the image
+
+            const postInfo = document.createElement('div');
+            postInfo.className = 'post-info';
+
+            const author = document.createElement('span');
+            author.className = 'post-author';
+            author.textContent = 'Jhefferson Castro Dos Santos';
+
+            const date = document.createElement('span');
+            date.className = 'post-date';
+            const currentDate = new Date().toLocaleDateString();
+            date.textContent = currentDate;
+
+            postInfo.appendChild(author);
+            postInfo.appendChild(date);
+
+            postHeader.appendChild(profileImg);
+            postHeader.appendChild(postInfo);
+
+            const postContent = document.createElement('div');
+            postContent.className = 'post-content';
+
+            if (postText) {
+                const postTextNode = document.createElement('p');
+                postTextNode.textContent = postText;
+                postContent.appendChild(postTextNode);
+            }
+
+            if (postFiles.length > 0) {
+                for (let i = 0; i < postFiles.length; i++) {
+                    const file = postFiles[i];
+                    const fileURL = URL.createObjectURL(file);
+
+                    if (file.type.startsWith('image/')) {
+                        const image = document.createElement('img');
+                        image.src = fileURL;
+                        image.className = 'media-item';
+                        postContent.appendChild(image);
+                    } else if (file.type.startsWith('video/')) {
+                        const video = document.createElement('video');
+                        video.src = fileURL;
+                        video.className = 'media-item';
+                        video.controls = true; // Add video controls
+                        video.autoplay = true; // Set autoplay
+                        video.muted = true;    // Set muted to comply with autoplay policy
+                        postContent.appendChild(video);
+                    }
+                }
+            }
+
+            postContainer.appendChild(postHeader);
+            postContainer.appendChild(postContent);
+
+            document.getElementById('posts-container').prepend(postContainer);
+
+            // Clear input fields after posting
+            document.getElementById('post-text').value = '';
+            document.getElementById('post-images').value = '';
+        }
+    }
+});
+
+
+
