@@ -389,9 +389,10 @@ footer p {
 }
 
 .section-content {
-    display: flex;
+    display: none;
     padding: 10px;
 }
+
 
 .expand-button {
     font-size: 20px;
@@ -494,26 +495,26 @@ footer p {
     max-height: 300px; /* Added this to scale the images and videos smaller */
 }
 
-.section-content {
+.section-content-post {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.section-content input[type="text"] {
+.section-content-post input[type="text"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.section-content input[type="file"] {
+.section-content-post input[type="file"] {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
 }
 
-.section-content button {
+.section-content-post button {
     padding: 10px;
     background-color: #007BFF;
     color: white;
@@ -522,6 +523,6 @@ footer p {
     cursor: pointer;
 }
 
-.section-content button:hover {
+.section-content-post button:hover {
     background-color: #0056b3;
 }

@@ -4,7 +4,7 @@ function toggleSection(id) {
     const sectionContent = document.getElementById(id);
     const button = document.getElementById(id + 'Button');
 
-    if (sectionContent.style.display === 'block') {
+    if (sectionContent.style.display === 'block' || sectionContent.style.display === '') {
         sectionContent.style.display = 'none';
         button.innerHTML = '&#10095;';
     } else {
@@ -49,3 +49,4 @@ function typeEffect() {
     }
     type();
 }
+
