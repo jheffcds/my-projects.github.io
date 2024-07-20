@@ -153,12 +153,44 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             document.getElementById('posts-container').prepend(postContainer);
 
-            // Clear input fields after posting
+            // Clear input fields and image preview after posting
             document.getElementById('post-text').value = '';
             document.getElementById('post-images').value = '';
+            document.getElementById('image-preview').innerHTML = ''; // Clear the image preview
         }
     }
 });
+
+document.getElementById('custom-file-button').addEventListener('click', function() {
+    document.getElementById('post-images').click();
+});
+
+document.getElementById('post-images').addEventListener('change', function() {
+    const previewContainer = document.getElementById('image-preview');
+    previewContainer.innerHTML = ''; // Clear previous previews
+
+    const files = this.files;
+    if (files.length === 0) return;
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                previewContainer.appendChild(img);
+            }
+
+            reader.readAsDataURL(file);
+        }
+    }
+});
+
+
+
 
 
 

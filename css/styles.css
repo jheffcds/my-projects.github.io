@@ -446,6 +446,13 @@ footer p {
 }
 
 /* New CSS for paragraph titles */
+/* Global styles to include box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 .post {
     border: 1px solid #ccc;
     padding: 10px;
@@ -499,19 +506,24 @@ footer p {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 20px;
 }
 
-.section-content-post input[type="text"] {
+.section-content-post input[type="text"],
+.section-content-post input[type="file"],
+.section-content-post button {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.section-content-post input[type="file"] {
-    border: 1px solid #ccc;
+.section-content-post input[type="text"] {
     padding: 10px;
-    border-radius: 5px;
+}
+
+.section-content-post input[type="file"] {
+    padding: 10px;
 }
 
 .section-content-post button {
@@ -525,4 +537,42 @@ footer p {
 
 .section-content-post button:hover {
     background-color: #0056b3;
+}
+
+/* Hide the default file input */
+/* Hide the default file input */
+#post-images {
+    display: none;
+}
+
+/* Style for the custom file button */
+#custom-file-button {
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+#custom-file-button:hover {
+    background-color: #000000;
+}
+
+/* Style for the image previews */
+#image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+#image-preview img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
