@@ -8,75 +8,77 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="navbar">
-        <div class="title">My Projects</div>
-        <div class="menu" id="menu">
-            <a href="#">Home</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="#">Contact</a>
-            <a href="posts.html">Posts</a>
+    <div id="app">
+        <div class="navbar">
+            <div class="title">My Projects</div>
+            <div class="menu" id="menu">
+                <a href="#">Home</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="#">Contact</a>
+                <a href="posts.html">Posts</a>
+            </div>
+            <div class="toggle-button" id="toggle-button" onclick="toggleMenu()">
+                &#9776;
+            </div>
         </div>
-        <div class="toggle-button" id="toggle-button" onclick="toggleMenu()">
-            &#9776;
+        <div class="container">
+            <!-- video section -->
+            <div class="video-container">
+                <video autoplay muted loop>
+                    <source src="assets/videos/up.mp4" type="video/mp4">
+                    Your browser does not supports the video tag.
+                </video>
+            </div>
+            <!-- Introduction section -->
+            <div class="introduction">
+                <h1>Introduction</h1>
+                <p>Welcome to my digital world! Here, I present a passion project born from the depths of Blender, where creativity meets digital craftsmanship. Meet Jevh, a 3D embodiment of my own persona, meticulously crafted to reflect my unique characteristics and essence.</p>
+            </div>
+            <!-- Gallery section -->
+            <div class="gallery">
+                <div class="gallery-left-container">
+                    <div class="gallery-item prev">
+                        <img id="prevImage" class="gallery-image" src="" alt="Previous Image">
+                    </div>
+                    <div class="gallery-item current">
+                        <img id="currentImage" class="gallery-image" src="" alt="Current Image">
+                    </div>
+                    <div class="gallery-item next">
+                        <img id="nextImage" class="gallery-image" src="" alt="Next Image">
+                    </div>
+                </div>
+                <div class="gallery-right-container">
+                    <p id="currentDescription" class="gallery-description">Description of the current image</p>
+                </div>
+            </div>
+            <div class="gallery-buttons">
+                <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+                <button class="next" onclick="changeImage(1)">&#10095;</button>
+            </div>        
+            <!-- New section for information and image -->
+            <div class="info-image-container">
+                <div class="info-container">
+                    <h3 id="infoText">Title</h3><br>
+                    <p id="description">This is the description of the image</p>
+                </div>
+                <div class="image-container">
+                    <img id="fixedImage" src="assets/images/image1.jpg" alt="Info Image" style="width: 200px; height: 200px;">
+                </div>
+            </div>
+            <div class="info-buttons">
+                <button class="prev-info" onclick="changeInfo(-1)">&#10094;</button>
+                <button class="next-info" onclick="changeInfo(1)">&#10095;</button>
+            </div>        
         </div>
+        <footer>
+            <p>&copy; 2024 All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><img src="assets/images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="assets/images/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="assets/images/gmail.png" alt="Gmail"></a>
+            </div>
+        </footer>
     </div>
-    <div class="container">
-        <!-- video section -->
-        <div class="video-container">
-            <video autoplay muted loop>
-                <source src="assets/videos/up.mp4" type="video/mp4">
-                Your browser does not supports the video tag.
-            </video>
-        </div>
-        <!-- Introduction section -->
-        <div class="introduction">
-            <h1>Introduction</h1>
-            <p>Welcome to my digital world! Here, I present a passion project born from the depths of Blender, where creativity meets digital craftsmanship. Meet Jevh, a 3D embodiment of my own persona, meticulously crafted to reflect my unique characteristics and essence.</p>
-        </div>
-        <!-- Gallery section -->
-        <div class="gallery">
-            <div class="gallery-left-container">
-                <div class="gallery-item prev">
-                    <img id="prevImage" class="gallery-image" src="" alt="Previous Image">
-                </div>
-                <div class="gallery-item current">
-                    <img id="currentImage" class="gallery-image" src="" alt="Current Image">
-                </div>
-                <div class="gallery-item next">
-                    <img id="nextImage" class="gallery-image" src="" alt="Next Image">
-                </div>
-            </div>
-            <div class="gallery-right-container">
-                <p id="currentDescription" class="gallery-description">Description of the current image</p>
-            </div>
-        </div>
-        <div class="gallery-buttons">
-            <button class="prev" onclick="changeImage(-1)">&#10094;</button>
-            <button class="next" onclick="changeImage(1)">&#10095;</button>
-        </div>        
-        <!-- New section for information and image -->
-        <div class="info-image-container">
-            <div class="info-container">
-                <h3 id="infoText">Title</h3><br>
-                <p id="description">This is the description of the image</p>
-            </div>
-            <div class="image-container">
-                <img id="fixedImage" src="assets/images/image1.jpg" alt="Info Image" style="width: 200px; height: 200px;">
-            </div>
-        </div>
-        <div class="info-buttons">
-            <button class="prev-info" onclick="changeInfo(-1)">&#10094;</button>
-            <button class="next-info" onclick="changeInfo(1)">&#10095;</button>
-        </div>        
-    </div>
-    <footer>
-        <p>&copy; 2024 All rights reserved.</p>
-        <div class="social-links">
-            <a href="#"><img src="assets/images/facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="assets/images/instagram.png" alt="Instagram"></a>
-            <a href="#"><img src="assets/images/gmail.png" alt="Gmail"></a>
-        </div>
-    </footer>
     <script src="js/scripts.js"></script>
 </body>
 </html>

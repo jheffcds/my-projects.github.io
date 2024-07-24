@@ -576,3 +576,23 @@ footer p {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin: 0 auto 40px;
+}
+
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

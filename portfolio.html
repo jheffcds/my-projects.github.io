@@ -6,6 +6,7 @@
     <title>Responsive Webpage with Gallery</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="navbar">
@@ -48,16 +49,19 @@
                 <div class="intro-content">
                     <div class="intro-text" id="aboutMeDetailsText">    
                         <h3 class="paragraph-title"><u>Personal Information</u></h3>
-                        <p>My name is Jhefferson Castro Dos Santos. I was born on [Your Birth Date] in [Your Birth Place].</p>
+                        <p>My name is Jhefferson, and I was born in Brazil on September 5, 1998.</p>
                         
                         <h3 class="paragraph-title"><u>Journey</u></h3>
-                        <p>At the age of [Your Age], I embarked on a journey to [New Country], where I faced numerous challenges and embraced new opportunities. This period of learning and growth has been integral to my development as a person and a professional.</p>
+                        <p>At the age of 9, my family and I embarked on a journey to Italy. This transition brought numerous challenges and opened up new opportunities. Learning a new language and adapting to a different culture were some of the most significant hurdles I faced. These experiences required me to be flexible and resilient, enabling me to adapt to any environment. This period of my life was marked by significant learning and growth, shaping both my personal and professional development.
+
+                        At the age of 20, I moved to Switzerland to study Computer Science. This move introduced a new set of challenges as I needed to adapt to studying and communicating in English. This experience further honed my adaptability and resilience, contributing significantly to my academic and personal growth.
+                        </p>
                         
                         <h3 class="paragraph-title"><u>Passions</u></h3>
-                        <p>My passions include technology, data analysis, and cloud computing. In my free time, I enjoy [Your Hobbies], which help me stay balanced and inspired.</p>
+                        <p>My passions include technology, art, sports, and traveling. These interests help me stay balanced and inspired, fueling my creativity and drive in various aspects of my personal experience.</p>
                         
                         <h3 class="paragraph-title"><u>Learning and Innovation</u></h3>
-                        <p>Through my journey, I have cultivated a deep love for learning and innovation, always seeking new ways to expand my horizons and contribute meaningfully to the world of technology.</p>
+                        <p>Throughout my journey, I have cultivated a deep love for learning and innovation. I am always seeking new ways to expand my horizons and contribute meaningfully to the worlds of art and technology. This continuous quest for knowledge and improvement is a cornerstone of my personal and professional life.</p>
                     </div>
                 </div>
             </div>
@@ -69,8 +73,37 @@
                 <span>Skills/Expertise</span>
                 <span class="expand-button" id="skillsButton">&#10095;</span>
             </div>
-            <div class="section-content" id="skills">
-                <p>This is the content for Skills/Expertise.</p>
+            <div class="section-content" id="skills">                 
+                        <h3 class="paragraph-title"><u>IT Skills</u></h3>
+                        <p>- Programming languages mastered: Java, Python, C, PHP, C++</p>
+                        <p>- Database Management Tools: MongoDB and SQL</p>
+                        <p>- Webpage development: Javascript, CSS, HTML, React, Github </p>
+                        <div class="chart-container">
+                            <canvas id="programmingSkillsChart"></canvas>
+                        </div>
+
+                        <h3 class="paragraph-title"><u>Computer and Software skills</u></h3>
+                        <p>- Coding: Visual Studio Code, Sublime Text, JetBrains IntelliJ IDEA, Atom, Android Studio and PyCharm.</p>
+                        <p>- Office 365 Products: Word, Excel, Power Point, Outlook and Teams.</p>
+                        <p>- Operating Systems: Linux, Windows and MacOS. </p>
+                        <div class="chart-container">
+                            <canvas id="officeSkillsChart"></canvas>
+                        </div>
+                        
+                        <h3 class="paragraph-title"><u>Artistic skills and competences</u></h3>
+                        <p>Digital painting, artistic (brush) painting, artisanal handicraft.</p>
+                        <p>Blender Software Skills: 3D Modeling, Texturing and Shading, Animation, Rendering and Lightning.</p>
+                        <p>Unreal Engine 5 Skills (Game Development): 3D Asset Integration, Level Design, Blueprint scripting, Material and Shader Creation, Lighting and Rendering, Animation Integration, Physics and Simulations and User Interface Design.</p>
+
+                        <h3 class="paragraph-title"><u>Language Skills</u></h3>
+                        <p><b>Italian</b> - Native language</p>
+                        <p><b>Portuguese</b> - Native language</p>
+                        <p><b>English</b> - C1 level</p>
+                        <p>Spanish - A2 level</p>
+                        <p>French - A2 level</p>
+                        <div class="chart-container">
+                            <canvas id="languageSkillsChart"></canvas>
+                        </div>
             </div>
         </div>
 
@@ -80,8 +113,9 @@
                 <span class="expand-button" id="resumeButton">&#10095;</span>
             </div>
             <div class="section-content" id="resume">
-                <p>This is the content for Resume/CV.</p>
-            </div>
+            <iframe src="assets/Download-files/Jhefferson-Castro-CV-EN" width="100%" height="500px"></iframe>
+            <br>
+            <a href="assets/Download-files/Jhefferson-Castro-CV-EN" download>Download Resume/CV</a>
         </div>
     </div>
     <footer>
@@ -94,5 +128,83 @@
     </footer>
     <script src="js/scripts.js"></script>
     <script src="js/portfolio.js"></script>
+    <script>
+        // Data for the charts
+        const programmingSkillsData = {
+            labels: ['JavaScript', 'Python', 'Java', 'C++', 'PHP', 'MongoDB', 'SQL','HTML','React','Github'],
+            datasets: [{
+                label: 'Competence (%)',
+                data: [85, 75, 80, 70, 65,60,70,100,50,90],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const officeSkillsData = {
+            labels: ['Word', 'PowerPoint', 'Excel', 'Outlook', 'Teams'],
+            datasets: [{
+                label: 'Competence (%)',
+                data: [90, 95, 85, 90,100],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const languageSkillsData = {
+            labels: ['Portuguese', 'Italian', 'English', 'Spanish', 'French'],
+            datasets: [{
+                label: 'Competence (%)',
+                data: [100, 100, 90, 65, 50],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Create the charts
+        const ctx1 = document.getElementById('programmingSkillsChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'radar',
+            data: programmingSkillsData,
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('officeSkillsChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'radar',
+            data: officeSkillsData,
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        const ctx3 = document.getElementById('languageSkillsChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'radar',
+            data: languageSkillsData,
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

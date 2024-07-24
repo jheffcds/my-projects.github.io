@@ -3,6 +3,7 @@ let currentInfoIndex = 0;
 let infoData = [];
 let images = [];
 
+// Function to change the gallery image
 function changeImage(direction) {
     currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
 
@@ -19,6 +20,7 @@ function changeImage(direction) {
     galleryItems[1].classList.add('current');
 }
 
+// Function to change the information display
 function changeInfo(direction) {
     if (infoData.length === 0) return;
 
@@ -33,6 +35,7 @@ function changeInfo(direction) {
     fixedImage.src = infoData[currentInfoIndex].image;
 }
 
+// Function to load information data
 function loadInfoData() {
     fetch('assets/data/info.json')
         .then(response => {
@@ -48,6 +51,7 @@ function loadInfoData() {
         .catch(error => console.error('Error loading info data:', error));
 }
 
+// Function to load gallery images
 function loadImages() {
     fetch('assets/data/gallery.json')
         .then(response => {
@@ -63,134 +67,156 @@ function loadImages() {
         .catch(error => console.error('Error loading images:', error));
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadImages(); // Load the images data on page load
-    loadInfoData(); // Load the info data on page load
-});
+function appendNewPost(postData) {
+    const postContainer = document.getElementById('posts-container');
+    const newPost = document.createElement('div');
+    newPost.className = 'post';
 
-function toggleMenu() {
-    const menu = document.getElementById('menu');
-    const toggleButton = document.getElementById('toggle-button');
-    if (menu.style.display === 'flex') {
-        menu.style.display = 'none';
-        toggleButton.innerHTML = '&#9776;'; // 3 horizontal lines
-    } else {
-        menu.style.display = 'flex';
-        toggleButton.innerHTML = '&times;'; // X symbol
+    const postHeader = document.createElement('div');
+    postHeader.className = 'post-header';
+
+    const profileImg = document.createElement('img');
+    profileImg.className = 'profile-pic';
+    profileImg.src = 'assets/images/myself_profile.jpg'; // Adjust the source as needed
+    profileImg.alt = 'Profile picture';
+
+    const postInfo = document.createElement('div');
+    postInfo.className = 'post-info';
+
+    const author = document.createElement('span');
+    author.className = 'post-author';
+    author.textContent = 'Jhefferson Castro Dos Santos'; // Adjust the author name as needed
+
+    const date = document.createElement('span');
+    date.className = 'post-date';
+    const currentDate = new Date().toLocaleDateString();
+    date.textContent = currentDate;
+
+    postInfo.appendChild(author);
+    postInfo.appendChild(date);
+
+    postHeader.appendChild(profileImg);
+    postHeader.appendChild(postInfo);
+
+    const postContent = document.createElement('div');
+    postContent.className = 'post-content';
+
+    if (postData.text) {
+        const postTextNode = document.createElement('p');
+        postTextNode.textContent = postData.text;
+        postContent.appendChild(postTextNode);
     }
+
+    if (postData.media && postData.media.length > 0) {
+        postData.media.forEach(media => {
+            const fileURL = URL.createObjectURL(media);
+            if (media.type.startsWith('image/')) {
+                const image = document.createElement('img');
+                image.src = fileURL;
+                image.className = 'media-item';
+                postContent.appendChild(image);
+            } else if (media.type.startsWith('video/')) {
+                const video = document.createElement('video');
+                video.src = fileURL;
+                video.className = 'media-item';
+                video.controls = true; // Add video controls
+                video.autoplay = true; // Set autoplay
+                video.muted = true;    // Set muted to comply with autoplay policy
+                postContent.appendChild(video);
+            }
+        });
+    }
+
+    newPost.appendChild(postHeader);
+    newPost.appendChild(postContent);
+
+    postContainer.prepend(newPost); // Add the new post at the beginning
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('post-button').addEventListener('click', createPost);
+    // Load data when the document is ready
+    loadInfoData();
+    loadImages();
 
-    function createPost() {
-        const postText = document.getElementById('post-text').value;
-        const postFiles = document.getElementById('post-images').files;
+    // Toggle menu for navbar
+    const toggleButton = document.getElementById('toggle-button');
+    const menu = document.getElementById('menu');
 
-        if (postText || postFiles.length > 0) {
-            const postContainer = document.createElement('div');
-            postContainer.className = 'post';
+    if (toggleButton && menu) {
+        toggleButton.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    }
 
-            const postHeader = document.createElement('div');
-            postHeader.className = 'post-header';
+    // Add event listener for post button in posts.html
+    const postButton = document.getElementById('post-button');
+    const customFileButton = document.getElementById('custom-file-button');
+    const postImagesInput = document.getElementById('post-images');
 
-            const profileImg = document.createElement('img');
-            profileImg.className = 'profile-pic';
-            profileImg.src = 'assets/images/myself_profile.jpg'; // Set the source of the image
-            profileImg.alt = 'Profile picture'; // Set the alt text for the image
+    if (postButton && customFileButton && postImagesInput) {
+        postButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            createPost();
+        });
 
-            const postInfo = document.createElement('div');
-            postInfo.className = 'post-info';
+        customFileButton.addEventListener('click', function() {
+            postImagesInput.click();
+        });
 
-            const author = document.createElement('span');
-            author.className = 'post-author';
-            author.textContent = 'Jhefferson Castro Dos Santos';
+        postImagesInput.addEventListener('change', function() {
+            const previewContainer = document.getElementById('image-preview');
+            previewContainer.innerHTML = ''; // Clear previous previews
 
-            const date = document.createElement('span');
-            date.className = 'post-date';
-            const currentDate = new Date().toLocaleDateString();
-            date.textContent = currentDate;
+            const files = this.files;
+            if (files.length === 0) return;
 
-            postInfo.appendChild(author);
-            postInfo.appendChild(date);
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
 
-            postHeader.appendChild(profileImg);
-            postHeader.appendChild(postInfo);
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
 
-            const postContent = document.createElement('div');
-            postContent.className = 'post-content';
-
-            if (postText) {
-                const postTextNode = document.createElement('p');
-                postTextNode.textContent = postText;
-                postContent.appendChild(postTextNode);
-            }
-
-            if (postFiles.length > 0) {
-                for (let i = 0; i < postFiles.length; i++) {
-                    const file = postFiles[i];
-                    const fileURL = URL.createObjectURL(file);
-
-                    if (file.type.startsWith('image/')) {
-                        const image = document.createElement('img');
-                        image.src = fileURL;
-                        image.className = 'media-item';
-                        postContent.appendChild(image);
-                    } else if (file.type.startsWith('video/')) {
-                        const video = document.createElement('video');
-                        video.src = fileURL;
-                        video.className = 'media-item';
-                        video.controls = true; // Add video controls
-                        video.autoplay = true; // Set autoplay
-                        video.muted = true;    // Set muted to comply with autoplay policy
-                        postContent.appendChild(video);
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        previewContainer.appendChild(img);
                     }
+
+                    reader.readAsDataURL(file);
                 }
             }
+        });
 
-            postContainer.appendChild(postHeader);
-            postContainer.appendChild(postContent);
-
-            document.getElementById('posts-container').prepend(postContainer);
-
-            // Clear input fields and image preview after posting
-            document.getElementById('post-text').value = '';
-            document.getElementById('post-images').value = '';
-            document.getElementById('image-preview').innerHTML = ''; // Clear the image preview
-        }
-    }
-});
-
-document.getElementById('custom-file-button').addEventListener('click', function() {
-    document.getElementById('post-images').click();
-});
-
-document.getElementById('post-images').addEventListener('change', function() {
-    const previewContainer = document.getElementById('image-preview');
-    previewContainer.innerHTML = ''; // Clear previous previews
-
-    const files = this.files;
-    if (files.length === 0) return;
-
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-
-        if (file.type.startsWith('image/')) {
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                previewContainer.appendChild(img);
+        function createPost() {
+            const form = document.getElementById('post-form');
+            if (!form) {
+                console.error('Form element not found');
+                return;
             }
 
-            reader.readAsDataURL(file);
+            const formData = new FormData(form);
+
+            fetch('http://localhost:5001/api/posts/create', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Clear input fields and image preview after posting
+                document.getElementById('post-text').value = '';
+                document.getElementById('post-images').value = '';
+                document.getElementById('image-preview').innerHTML = ''; // Clear the image preview
+
+                // Append the new post to the DOM
+                appendNewPost({
+                    text: formData.get('text'), // Get text content from formData
+                    media: Array.from(postImagesInput.files) // Get files from input
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         }
     }
 });
-
-
-
-
-
-
